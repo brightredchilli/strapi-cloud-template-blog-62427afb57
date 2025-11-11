@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "persons",
+  "info": {
+    "singularName": "person",
+    "pluralName": "persons",
+    "displayName": "Person"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "first_name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "required": true
+    },
+    "last_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bio": {
+      "type": "text"
+    },
+    "email": {
+      "type": "email"
+    },
+    "profile_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "specializations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specialization.specialization"
+    },
+    "practice_areas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::practice-area.practice-area",
+      "inversedBy": "people"
+    }
+  }
+}
